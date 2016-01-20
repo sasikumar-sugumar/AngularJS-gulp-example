@@ -1,0 +1,151 @@
+<div class=row>
+	<div class="col-lg-12 col-md-6">
+		<div class="panel panel-default">
+			<div class=panel-heading>
+				<h2>Searching for a talent? Create a qyiik ID.</h2>
+			</div>
+			<div class=panel-body>
+				<div class=col-lg-5>
+					<form role=form name=SignUpForm>
+						<fieldset>
+							<p>A qyiik ID is your user name for everything you do
+								onqyiik.</p>
+							<div class="form-group required"
+								ng-class="{ 'has-error' : (userForm.form.submitted || SignUpForm.companyName.$touched) && SignUpForm.companyName.$invalid}">
+								<label for=companyName>Company</label>
+								<div>
+									<select id=companyName name=companyName class=form-control
+										ng-model=userForm.user.companyName required><option
+											value="" selected>Choose Company
+										<option ng-repeat="company in userForm.allCompany.data"
+											value={{company.id}}>{{company.name}}</select>
+								</div>
+								<span
+									ng-if="userForm.form.submitted || SignUpForm.companyName.$touched"><p
+										class=text-danger
+										ng-show=SignUpForm.companyName.$error.required>Select a
+										Company.</p></span>
+							</div>
+							<div class=form-group>
+								<label for=name>Name</label>
+								<div>Please enter your full name.</div>
+							</div>
+							<div class="form-group required"
+								ng-class="{ 'has-error' : (userForm.form.submitted || SignUpForm.firstName.$touched) && SignUpForm.firstName.$invalid  }">
+								<label for=firstName style="font-weight: 400">FirstName</label>
+								<div>
+									<input id=firstName name=firstName
+										ng-model=userForm.user.firstName placeholder=example:jane
+										class="form-control input-md" required> <span
+										ng-if="userForm.form.submitted || SignUpForm.firstName.$touched"><p
+											class=text-danger
+											ng-show=SignUpForm.firstName.$error.required>Enter your
+											First Name.</p></span>
+								</div>
+							</div>
+							<div class="form-group required"
+								ng-class="{ 'has-error' : (userForm.form.submitted || SignUpForm.lastName.$touched) && SignUpForm.lastName.$invalid }">
+								<label for=lastName style="font-weight: 400">LastName</label>
+								<div>
+									<input id=lastName name=lastName
+										ng-model=userForm.user.lastName placeholder=example:smith
+										class="form-control input-md" required> <span
+										ng-if="userForm.form.submitted || SignUpForm.lastName.$touched"><p
+											class=text-danger ng-show=SignUpForm.lastName.$error.required>Enter
+											your Last Name.</p></span>
+								</div>
+							</div>
+							<div class=form-group>
+								<label for=name>qyiik ID and Password</label>
+								<div>Enter your company email address as your qyiik id.</div>
+							</div>
+							<div class="form-group required"
+								ng-class="{ 'has-error' : (userForm.form.submitted || SignUpForm.emailAddress.$touched) && SignUpForm.emailAddress.$invalid }">
+								<label for=emailAddress style="font-weight: 400">Email</label>
+								<div>
+									<input id=emailAddress name=emailAddress
+										ng-model=userForm.user.emailAddress type=email
+										placeholder="example: firstlast@example.com"
+										class="form-control input-md" required> <span
+										ng-if="userForm.form.submitted || SignUpForm.emailAddress.$touched"><p
+											class=text-danger
+											ng-show=SignUpForm.emailAddress.$error.required>Enter
+											your Email.</p>
+										<p class=text-danger
+											ng-show=SignUpForm.emailAddress.$error.email>Enter your
+											valid Email.</p></span>
+								</div>
+							</div>
+							<div class="form-group required"
+								ng-class="{ 'has-error' : (userForm.form.submitted || SignUpForm.password.$touched) && SignUpForm.password.$invalid }">
+								<label for=password style="font-weight: 400">Password</label>
+								<div>
+									<input id=password name=password type=password
+										ng-model=userForm.user.password
+										placeholder="Easy to remember, hard to guess"
+										class="form-control input-md" ng-pattern=userForm.pattern
+										required> <span
+										ng-if="userForm.form.submitted || SignUpForm.password.$touched"><p
+											class=text-danger ng-show=SignUpForm.password.$error.required>Create
+											a Password.</p></span>
+								</div>
+							</div>
+							<div class="form-group required"
+								ng-class="{ 'has-error' : (userForm.form.submitted || SignUpForm.confirmPassword.$touched) && SignUpForm.confirmPassword.$invalid }">
+								<label for=confirmPassword style="font-weight: 400">ConfirmPassword</label>
+								<div>
+									<input id=confirmPassword name=confirmPassword
+										ng-model=userForm.user.confirmPassword type=password
+										placeholder="Enter the same password again"
+										class="form-control input-md" ng-pattern=userForm.pattern
+										required> <span
+										ng-if="userForm.form.submitted || SignUpForm.confirmPassword.$touched"><p
+											class=text-danger
+											ng-show=SignUpForm.confirmPassword.$error.required>Confirm
+											Password.</p>
+										<p class=text-danger
+											ng-show="userForm.user.password != userForm.user.confirmPassword && userForm.user.confirmPassword.length > 0">Passwords
+											do not match.</p></span>
+								</div>
+							</div>
+							<div class="form-group required"
+								ng-class="{ 'has-error' : (userForm.form.submitted || SignUpForm.termsAndCondition.$touched) && SignUpForm.termsAndCondition.$invalid }">
+								<label for=termsAndCondition></label>
+								<div>
+									<div class=checkbox>
+										<label for=termsAndCondition><input type=checkbox
+											name=termsAndCondition id=termsAndCondition
+											ng-model=userForm.user.termsAndCondition required> I
+											have read and accept quiiks Terms of Use and Privacy Policy</label><span
+											ng-if="userForm.form.submitted || SignUpForm.termsAndCondition.$touched"><p
+												class=text-danger
+												ng-show=SignUpForm.termsAndCondition.$error.required>Accept
+												the Terms & Condition.</p></span>
+									</div>
+								</div>
+							</div>
+							<div class=form-group>
+								<label for=button1id></label>
+								<div>
+									<button
+										class="col-lg-4 col-md-10 col-sm-8 col-xs-12 btn btn-default"
+										id=button1id name=button1id>Cancel</button>
+									<div class="col-lg-1 col-md-10 col-sm-12 col-xs-12">&nbsp;</div>
+									<button
+										class="col-lg-4 col-md-10 col-sm-8 col-xs-12 btn btn-primary"
+										id=submit name=submit ng-click=createAccount(SignUpForm)>Create
+										qyiik ID</button>
+								</div>
+							</div>
+							<div class=row ng-if=userForm.form.submitted>
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+									<div>{{userForm.form.message}}</div>
+								</div>
+							</div>
+						</fieldset>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
